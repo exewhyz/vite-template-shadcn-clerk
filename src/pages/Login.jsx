@@ -2,9 +2,7 @@ import { SignIn } from "@clerk/clerk-react";
 
 function Login() {
   return (
-    <main>
-      <SignIn />
-    </main>
+    <SignIn path="/auth/login" routing="path" signUpUrl="/auth/register" />
   );
 }
 
