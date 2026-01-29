@@ -1,16 +1,144 @@
-# React + Vite
+# Vite React Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React application built with Vite, featuring authentication via Clerk and a beautiful UI with Shadcn components.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚡ **Vite** - Lightning-fast build tool and dev server
+- 🔐 **Clerk Authentication** - Secure user authentication and management
+- 🎨 **Shadcn UI** - High-quality, customizable React components
+- 🌬️ **Tailwind CSS** - Utility-first CSS framework
+- 🛣️ **React Router** - Client-side routing
+- 📱 **Responsive Design** - Mobile-friendly interface
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React 18+
+- **Build Tool**: Vite
+- **Authentication**: Clerk
+- **Styling**: Tailwind CSS + Vite plugin
+- **UI Components**: Shadcn UI
+- **Routing**: React Router
+- **Code Quality**: ESLint + React Hooks
 
-## Expanding the ESLint configuration
+## Prerequisites
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Node.js (v18 or higher)
+- npm or yarn package manager
+- Clerk account (free at [clerk.com](https://clerk.com))
+
+## Local Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd AI
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Environment Configuration
+
+Copy the example environment file:
+
+```bash
+cp .env.example .env
+```
+
+Get your Clerk API keys from [Clerk Dashboard](https://dashboard.clerk.com):
+- Sign in to your Clerk account
+- Navigate to API Keys
+- Copy your **Publishable Key**
+
+Update `.env`:
+
+```env
+VITE_CLERK_PUBLISHABLE_KEY=your_publishable_key_here
+```
+
+### 4. Start Development Server
+
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable React components
+│   ├── Navbar.jsx      # Navigation bar
+│   ├── ProtectedRoute.jsx  # Auth-protected route wrapper
+│   ├── Spinner.jsx     # Loading spinner
+│   └── ui/             # Shadcn UI components
+├── pages/              # Page components
+│   ├── Home.jsx
+│   ├── Login.jsx
+│   ├── Register.jsx
+│   ├── Profile.jsx
+│   └── NotFound.jsx
+├── layouts/            # Layout components
+│   ├── RootLayout.jsx  # Main layout with navbar
+│   └── AuthLayout.jsx  # Auth pages layout
+├── lib/                # Utility functions
+│   └── utils.js        # Helper functions (cn, etc.)
+├── App.jsx             # Router configuration
+└── main.jsx            # Entry point
+```
+
+## Available Scripts
+
+```bash
+# Development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Run ESLint
+npm run lint
+```
+
+## Routes
+
+- `/` - Home page (protected)
+- `/auth/login` - Login page
+- `/auth/register` - Registration page
+- `/auth/profile` - User profile (protected)
+- `*` - 404 Not Found page
+
+## Authentication Flow
+
+1. **Unauthenticated users** are redirected to `/auth/login`
+2. **Protected routes** use the `ProtectedRoute` component wrapper
+3. **Clerk UI** components handle sign-in/sign-up/profile management
+4. **UserButton** displays user info and logout option in navbar
+
+## Styling
+
+The project uses Tailwind CSS v4 with custom theme configuration. CSS variables are defined in [src/index.css](src/index.css) for consistent theming across light and dark modes.
+
+## Next Steps
+
+1. Configure Clerk authentication settings in your dashboard
+2. Customize the theme in [src/index.css](src/index.css)
+3. Add your image generation API integration
+4. Build out additional pages and components
+
+## Support
+
+For questions about:
+- **Clerk**: Visit [Clerk Documentation](https://clerk.com/docs)
+- **Tailwind CSS**: Check [Tailwind Docs](https://tailwindcss.com/docs)
+- **React Router**: See [React Router Guide](https://reactrouter.com)
+- **Shadcn UI**: Browse [Shadcn UI Components](https://ui.shadcn.com)
