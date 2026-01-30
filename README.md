@@ -10,16 +10,19 @@ A modern React application built with Vite, featuring authentication via Clerk a
 - 🌬️ **Tailwind CSS** - Utility-first CSS framework
 - 🛣️ **React Router** - Client-side routing
 - 📱 **Responsive Design** - Mobile-friendly interface
+- 🎭 **Clerk Themes** - Customizable authentication UI with @clerk/themes
+- 🌙 **Dark Mode Support** - Full dark mode implementation with theme switching
 
 ## Tech Stack
 
 - **Frontend**: React 18+
 - **Build Tool**: Vite
-- **Authentication**: Clerk
-- **Styling**: Tailwind CSS + Vite plugin
+- **Authentication**: Clerk + @clerk/themes
+- **Styling**: Tailwind CSS v4 + Vite plugin
 - **UI Components**: Shadcn UI
 - **Routing**: React Router
 - **Code Quality**: ESLint + React Hooks
+- **Theme Management**: Dark mode with CSS variables
 
 ## Prerequisites
 
@@ -51,6 +54,7 @@ cp .env.example .env
 ```
 
 Get your Clerk API keys from [Clerk Dashboard](https://dashboard.clerk.com):
+
 - Sign in to your Clerk account
 - Navigate to API Keys
 - Copy your **Publishable Key**
@@ -71,7 +75,7 @@ The app will be available at `http://localhost:5173`
 
 ## Project Structure
 
-```
+```text
 src/
 ├── components/          # Reusable React components
 │   ├── Navbar.jsx      # Navigation bar
@@ -124,9 +128,24 @@ npm run lint
 3. **Clerk UI** components handle sign-in/sign-up/profile management
 4. **UserButton** displays user info and logout option in navbar
 
-## Styling
+## Styling & Theming
 
 The project uses Tailwind CSS v4 with custom theme configuration. CSS variables are defined in [src/index.css](src/index.css) for consistent theming across light and dark modes.
+
+### Dark Mode & Clerk Themes
+
+- Theme switching is managed through the `theme-provider.jsx` component
+- Clerk authentication UI automatically adapts to your theme using `@clerk/themes`
+- CSS variables control both application and Clerk component styling
+- Light and dark mode themes are fully customizable
+
+### Shadcn UI Dark Mode Integration
+
+- All Shadcn UI components automatically support dark mode through Tailwind CSS
+- Components inherit theme colors from CSS variables defined in [src/index.css](src/index.css)
+- Dark mode is triggered by the `dark` class on the root element
+- Customize component colors and styling in `components.json` and individual component files
+- Shadcn components use Tailwind's `dark:` prefix for dark mode-specific styles
 
 ## Next Steps
 
@@ -138,6 +157,7 @@ The project uses Tailwind CSS v4 with custom theme configuration. CSS variables 
 ## Support
 
 For questions about:
+
 - **Clerk**: Visit [Clerk Documentation](https://clerk.com/docs)
 - **Tailwind CSS**: Check [Tailwind Docs](https://tailwindcss.com/docs)
 - **React Router**: See [React Router Guide](https://reactrouter.com)
