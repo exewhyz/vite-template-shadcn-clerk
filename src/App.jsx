@@ -33,10 +33,20 @@ const routes = [
           {
             path: "login",
             element: <Login />,
+            children: [
+              {
+                path: "*",
+              },
+            ],
           },
           {
             path: "register",
             element: <Register />,
+            children: [
+              {
+                path: "*",
+              },
+            ],
           },
           {
             path: "profile",
@@ -45,11 +55,6 @@ const routes = [
                 <Profile />
               </ProtectedRoute>
             ),
-            children: [
-              {
-                path: "security",
-              },
-            ],
           },
         ],
       },
