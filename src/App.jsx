@@ -27,7 +27,7 @@ const routes = [
         ),
       },
       {
-        path: "/auth",
+        path: "auth",
         element: <AuthLayout />,
         children: [
           {
@@ -55,6 +55,11 @@ const routes = [
                 <Profile />
               </ProtectedRoute>
             ),
+            children: [
+              {
+                path: "security",
+              },
+            ],
           },
         ],
       },
