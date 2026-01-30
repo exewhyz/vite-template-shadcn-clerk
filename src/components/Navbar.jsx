@@ -3,10 +3,15 @@ import { NavLink } from "react-router";
 import { Button } from "./ui/button";
 import { useAuth, UserButton } from "@clerk/clerk-react";
 import Spinner from "./Spinner";
+import { useTheme } from "./theme-provider";
+import { Moon, Sun } from "lucide-react";
 
 function Navbar() {
   const { isLoaded, isSignedIn } = useAuth();
-
+  const { theme, setTheme } = useTheme();
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
   return (
     <nav className="sticky top-0 z-50 flex h-14 items-center justify-between px-8 shadow-sm">
       <h1 className="text-4xl font-bold">Imagione</h1>
@@ -34,9 +39,15 @@ function Navbar() {
             >
               <UserButton.MenuItems>
                 <UserButton.Action
-                  label="Open chat"
-                  labelIcon={<DotIcon />}
-                  onClick={() => alert("init chat")}
+                  label={theme === "dark" ? "Light Mode" : "Dark Mode"}
+                  labelIcon={
+                    theme === "dark" ? (
+                      <Sun className="w-4 h-4" />
+                    ) : (
+                      <Moon className="w-4 h-4" />
+                    )
+                  }
+                  onClick={toggleTheme}
                 />
                 <UserButton.Link
                   label="Create organization"
